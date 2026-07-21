@@ -40,8 +40,8 @@ jobs:
           languages: ${{ matrix.language }}
           build-mode: ${{ matrix.build-mode }}
 
-      - name: Build (assembleDebug)
-        run: ./gradlew assembleDebug --no-daemon
+      - name: Build (compile only, dex not needed for CodeQL)
+        run: ./gradlew compileDebugKotlin compileDebugJavaWithJavac --no-daemon
         working-directory: InsecureShop-android
 
       - name: Perform CodeQL Analysis
